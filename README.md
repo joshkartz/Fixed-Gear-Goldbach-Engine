@@ -19,11 +19,11 @@ Quick Start
 bash# Build
 dotnet build -c Release
 
-##Example arguments to verify [4, 1 billion] with K=300 gear
+## Example arguments to verify [4, 1 billion] with K=300 gear
 
 dotnet run -c Release -- --limit 1000000000 --gear 300 --segmentEvens 250000000 --threadsInside 12
 
-##Example arguments to verify Quintillion-scale slice with Miller-Rabin mode
+## Example arguments to verify Quintillion-scale slice with Miller-Rabin mode
 
 dotnet run -c Release -- --mode mr --startN 1000000000000000000 --windowEvens 1000000000 --gear 300
 Results
