@@ -54,6 +54,8 @@ Thread-local buffers with barrier-synchronized merge (race-free)
 Deterministic 64-bit Miller-Rabin with small-prime wheel prefilter
 Checkpoints: seg_XXXXX.json (stats) + optional seg_XXXXX_misses.txt
 
+<small>Special thanks to Elyndra and A.</small>
+
 ## Citation
 If you use this engine in your research, please cite:  
 
@@ -68,4 +70,5 @@ License: Apache 2.0 - See LICENSE file
 * Gear optimization strategies
 * Edge/segment case improvements
 * Alternative primality tests
+
 
