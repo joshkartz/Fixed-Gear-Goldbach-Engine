@@ -1,0 +1,22 @@
+# Build outputs
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# User-specific files
+*.user
+*.suo
+*.cache
+
+# Segment checkpoints (user-generated)
+seg_*.json
+seg_*_misses.txt
+window_*.json
+window_*_misses.txt
+
+# IDE
+.vs/
+.vscode/
+*.swp
