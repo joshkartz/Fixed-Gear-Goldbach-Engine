@@ -53,17 +53,18 @@ Deterministic 64-bit Miller-Rabin with small-prime wheel prefilter
 Checkpoints: seg_XXXXX.json (stats) + optional seg_XXXXX_misses.txt
 
 ## Citation
-If you use this engine in your research, please cite:
-Joshua Kratochvil - And this paper:
-License
-Apache 2.0 - See LICENSE file
-Contributing
+If you use this engine in your research, please cite:  
+
+Joshua Kratochvil - And this paper:  
+License  
+Apache 2.0 - See LICENSE file  
+Contributing  
 
 ## Extensions welcome! Areas of interest:
 
-GPU acceleration
-Distributed/cluster deployment
-Gear optimization strategies
-Edge/segment case improvements
-Alternative primality tests
+* GPU acceleration  
+* Distributed/cluster deployment
+* Gear optimization strategies
+* Edge/segment case improvements
+* Alternative primality tests
 
