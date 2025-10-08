@@ -30,22 +30,23 @@ Results
 
 ## Parameters
 
---mode          sieve | mr (default: sieve)
---limit         Max even for sieve mode
---startN        Starting even for MR slice
---windowEvens   Number of evens in MR window
---gear          K (size of witness set, default: 310)
---segmentEvens  Evens per segment (default: 500M)
---threadsInside Threads per segment (tune for your CPU)
---resume        Skip completed segments
---verifySeams   Enable boundary verification
+* --mode          sieve | mr (default: sieve)
+* --limit         Max even for sieve mode
+* --startN        Starting even for MR slice
+* --windowEvens   Number of evens in MR window
+* --gear          K (size of witness set, default: 310)
+* --segmentEvens  Evens per segment (default: 500M)
+* --threadsInside Threads per segment (tune for your CPU)
+* --resume        Skip completed segments
+* --verifySeams   Enable boundary verification
+
+
+## 
 [4, 10^10]: 100% coverage, K=300, segmented sieve
 [4, 10^12]: 99.999999%+ coverage, K=300
 Quintillion slices: 100% observed coverage in tested windows
-
-## 
 See the paper for full methodology and results.
-
+##
 Segmented bitset handles arbitrarily large ranges within CLR array limits
 Thread-local buffers with barrier-synchronized merge (race-free)
 Deterministic 64-bit Miller-Rabin with small-prime wheel prefilter
