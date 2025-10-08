@@ -1,7 +1,7 @@
 # Fixed-Gear-Goldbach-Engine
 A Constant-Residue Witness Engine in C# using NUMA  
 
-# Fixed-Gear Goldbach Verification Engine:
+Fixed-Gear Goldbach Verification Engine:
 High-throughput verification of the even Goldbach conjecture using a constant-residue witness set ("gear"). Validated at trillion scale with 99.99999%+ coverage.
 
 ## Overview
@@ -17,7 +17,7 @@ Auditable: JSON segment reports + optional miss logging
 
 Made with .NET 5, changes may or may not need to be done to run on current/later versions.  
 
-Quick Start
+# Quick Start
 bash# Build
 dotnet build -c Release
 
