@@ -1,19 +1,21 @@
 # Fixed-Gear-Goldbach-Engine
 A Constant-Residue Witness Engine in C# using NUMA  
 
-Fixed-Gear Goldbach Verification Engine:
+# Fixed-Gear Goldbach Verification Engine:
 High-throughput verification of the even Goldbach conjecture using a constant-residue witness set ("gear"). Validated at trillion scale with 99.99999%+ coverage.
-Overview
+
+## Overview
 This engine reduces per-even work to O(1) by fixing a small set of witness primes Q (e.g., the first 300 primes) and asking only: "Is n-q prime for some q in Q?"
-Key features:
 
-Segmented architecture with bounded RAM (configurable segment size)
-Two execution modes: segmented sieve (10^9-10^12 scale) and deterministic 64-bit Miller-Rabin (quintillion slices)
-Per-segment checkpointing with resume capability
-Parallel execution with NUMA-aware thread affinity
-Auditable: JSON segment reports + optional miss logging
+## Key features:
 
-Made with .NET 5, changes may or may not need to be done to run on current/later versions.
+Segmented architecture with bounded RAM (configurable segment size)  
+Two execution modes: segmented sieve (10^9-10^12 scale) and deterministic 64-bit Miller-Rabin (quintillion slices)  
+Per-segment checkpointing with resume capability  
+Parallel execution with NUMA-aware thread affinity  
+Auditable: JSON segment reports + optional miss logging  
+
+Made with .NET 5, changes may or may not need to be done to run on current/later versions.  
 
 Quick Start
 bash# Build
@@ -56,11 +58,10 @@ Checkpoints: seg_XXXXX.json (stats) + optional seg_XXXXX_misses.txt
 If you use this engine in your research, please cite:  
 
 Joshua Kratochvil - And this paper:  
-License  
-Apache 2.0 - See LICENSE file  
-Contributing  
+License: Apache 2.0 - See LICENSE file  
 
-## Extensions welcome! Areas of interest:
+
+## Contributing: Extensions welcome! Areas of interest:
 
 * GPU acceleration  
 * Distributed/cluster deployment
