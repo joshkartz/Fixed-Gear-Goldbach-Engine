@@ -97,7 +97,7 @@ namespace ResonanceEngine
 
         public void Set(long nEven)
         {
-            long idx = (nEven >> 1)- 1;          // n=2 -> idx=0
+            long idx = (nEven >> 1)- 1;          // old: n=2 -> idx=0. choose one style throughout
             if (idx < 0) return;
             long segIdx = idx / segmentEvens;
             if ((uint)segIdx >= (uint)segments.Count) return;
@@ -113,7 +113,7 @@ namespace ResonanceEngine
 
         public bool Get(long nEven)
         {
-            long idx = (nEven >> 1) - 1;          // n=2 -> idx=0
+            long idx = (nEven >> 1) - 1;          // n=2 -> idx=0 choose one style throughout
             if (idx < 0) return false;
             long segIdx = idx / segmentEvens;
             if ((uint)segIdx >= (uint)segments.Count) return false;
@@ -331,13 +331,13 @@ namespace ResonanceEngine
             int qMinOdd = gear[0];
             int qMax = gear[^1];
 
-            // ★ Slot-overlap: expand slot window a bit on both sides
+            // Slot-overlap: expand slot window a bit on both sides
             // Use overlap proportional to qMax so it scales with gear size.
             long overlapSlots = Math.Max(1024, 2L * qMax);  // tune: >= 2*qMax is bulletproof
             long idxStartX = Math.Max(0, idxStart - overlapSlots);
             long idxEndX = Math.Min(totalSlots - 1, idxEnd + overlapSlots);
 
-            // ★ Build p-window from the EXPANDED evens window, not just the true one
+            // Build p-window from the EXPANDED evens window, not just the true one
             long nStartX = (idxStartX + 1) << 1;
             long nEndX = (idxEndX + 1) << 1;
 
@@ -561,3 +561,4 @@ namespace ResonanceEngine
         }
     }
 }
+
