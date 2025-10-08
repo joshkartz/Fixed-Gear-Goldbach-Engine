@@ -28,12 +28,8 @@ dotnet run -c Release -- --limit 1000000000 --gear 300 --segmentEvens 250000000 
 dotnet run -c Release -- --mode mr --startN 1000000000000000000 --windowEvens 1000000000 --gear 300
 Results
 
-[4, 10^10]: 100% coverage, K=300, segmented sieve
-[4, 10^12]: 99.999999%+ coverage, K=300
-Quintillion slices: 100% observed coverage in tested windows
+## Parameters
 
-See the paper for full methodology and results.
-Parameters
 --mode          sieve | mr (default: sieve)
 --limit         Max even for sieve mode
 --startN        Starting even for MR slice
@@ -43,20 +39,26 @@ Parameters
 --threadsInside Threads per segment (tune for your CPU)
 --resume        Skip completed segments
 --verifySeams   Enable boundary verification
-Implementation Notes
+[4, 10^10]: 100% coverage, K=300, segmented sieve
+[4, 10^12]: 99.999999%+ coverage, K=300
+Quintillion slices: 100% observed coverage in tested windows
+
+## 
+See the paper for full methodology and results.
 
 Segmented bitset handles arbitrarily large ranges within CLR array limits
 Thread-local buffers with barrier-synchronized merge (race-free)
 Deterministic 64-bit Miller-Rabin with small-prime wheel prefilter
 Checkpoints: seg_XXXXX.json (stats) + optional seg_XXXXX_misses.txt
 
-Citation
+## Citation
 If you use this engine in your research, please cite:
 Joshua Kratochvil - And this paper:
 License
 Apache 2.0 - See LICENSE file
 Contributing
-Extensions welcome! Areas of interest:
+
+## Extensions welcome! Areas of interest:
 
 GPU acceleration
 Distributed/cluster deployment
