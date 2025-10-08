@@ -13,6 +13,8 @@ Per-segment checkpointing with resume capability
 Parallel execution with NUMA-aware thread affinity
 Auditable: JSON segment reports + optional miss logging
 
+Made with .NET 5, changes may or may not need to be done to run on current/later versions.
+
 Quick Start
 bash# Build
 dotnet build -c Release
