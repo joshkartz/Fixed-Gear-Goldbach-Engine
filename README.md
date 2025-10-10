@@ -59,7 +59,7 @@ Checkpoints: seg_XXXXX.json (stats) + optional seg_XXXXX_misses.txt
 ## Citation
 If you use this engine in your research, please cite:  
 
-Joshua Kratochvil - And this paper:  
+Joshua Kratochvil - And this paper: https://zenodo.org/records/17308646
 License: Apache 2.0 - See LICENSE file  
 
 
