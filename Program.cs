@@ -6,6 +6,7 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -239,7 +240,7 @@ namespace ResonanceEngine
     // ===========================
     // Program
     // ===========================
-    class Program
+    partial class Program
     {
         // Defaults
         static string MODE = "sieve";        // sieve | mr
@@ -259,6 +260,10 @@ namespace ResonanceEngine
         const int PAD = 8; // p-interval padding to kill fenceposts
 
         record SegmentReport(int Index, long NStart, long NEnd, long Covered, long TotalEvens, double Pct, double Seconds);
+
+        [JsonSerializable(typeof(SegmentReport))]
+        [JsonSourceGenerationOptions(WriteIndented = true)]
+        partial class SourceGenerationContext : JsonSerializerContext;
 
         static void ParseArgs(string[] args)
         {
@@ -429,7 +434,7 @@ namespace ResonanceEngine
                 // empty segment after excluding trivials
                 var repEmpty = new SegmentReport(segIndex, nStart, nEnd, 0, 0, 100.0, sw.Elapsed.TotalSeconds);
                 File.WriteAllText($"seg_{segIndex:D5}.json",
-                    JsonSerializer.Serialize(repEmpty, new JsonSerializerOptions { WriteIndented = true }));
+                    JsonSerializer.Serialize(repEmpty, SourceGenerationContext.Default.SegmentReport));
                 return repEmpty;
             }
 
@@ -446,7 +451,7 @@ namespace ResonanceEngine
 
             double sec = sw.Elapsed.TotalSeconds;
             var rep = new SegmentReport(segIndex, nStart, nEnd, covered, totalEvens, 100.0 * covered / totalEvens, sec);
-            File.WriteAllText($"seg_{segIndex:D5}.json", JsonSerializer.Serialize(rep, new JsonSerializerOptions { WriteIndented = true }));
+            File.WriteAllText($"seg_{segIndex:D5}.json", JsonSerializer.Serialize(rep, SourceGenerationContext.Default.SegmentReport));
             if (missesOut is not null && missesOut.Count > 0)
                 File.WriteAllLines($"seg_{segIndex:D5}_misses.txt", missesOut.ConvertAll(x => x.ToString()));
             return rep;
@@ -499,7 +504,7 @@ namespace ResonanceEngine
 
             double sec = sw.Elapsed.TotalSeconds;
             var rep = new SegmentReport(0, nStart, nEnd, covered, windowEvens, 100.0 * covered / windowEvens, sec);
-            File.WriteAllText($"window_{nStart}_{windowEvens}.json", JsonSerializer.Serialize(rep, new JsonSerializerOptions { WriteIndented = true }));
+            File.WriteAllText($"window_{nStart}_{windowEvens}.json", JsonSerializer.Serialize(rep, SourceGenerationContext.Default.SegmentReport));
             if (missesOut is not null && missesOut.Count > 0)
                 File.WriteAllLines($"window_{nStart}_{windowEvens}_misses.txt", missesOut.ConvertAll(x => x.ToString()));
             return rep;
@@ -543,7 +548,7 @@ namespace ResonanceEngine
                 if (RESUME && File.Exists(ck))
                 {
                     Console.WriteLine($"[seg {s:D5}] resume: checkpoint exists, skipping.");
-                    reports[s] = JsonSerializer.Deserialize<SegmentReport>(File.ReadAllText(ck));
+                    reports[s] = JsonSerializer.Deserialize<SegmentReport>(File.ReadAllText(ck), SourceGenerationContext.Default.SegmentReport);
                     return;
                 }
                 ulong segMask = AFFINITY_MASK; // optionally pin
