@@ -6,7 +6,7 @@ If you use this software in your research, please cite:
 
 Joshua Kratochvil
 
-arXiv:XXXX.XXXXX [math.NT] (2025) (will be added soon)
+[Zenodo (2025) 10.5281/zenodo.17308645](https://zenodo.org/records/17308646)
 
 ## BibTeX
 ```bibtex
@@ -14,7 +14,6 @@ arXiv:XXXX.XXXXX [math.NT] (2025) (will be added soon)
   title={Fixed-Gear Goldbach Verification: A Constant-Residue Witness Engine at Billion Scale and Quintillion Slices},
   author={Kratochvil, Joshua},
   year={2025},
-  eprint={XXXX.XXXXX},
-  archivePrefix={arXiv},
+  doi={10.5281/zenodo.17308645.} 
   primaryClass={math.NT}
 }
